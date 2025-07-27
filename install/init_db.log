@@ -1,0 +1,59 @@
+[2025-07-23 06:28:02] Registros insertados:
+  - categorias: 10
+  - accesorios: 10
+  - productos: 10
+  - comentarios: 10
+[2025-07-23 06:56:16] Error al insertar productos: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nombre' in 'field list'
+Error al insertar comentarios: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'producto_id' in 'field list'
+
+[2025-07-23 06:56:16] Registros básicos insertados:
+  - categorias: 10
+  - accesorios: 10
+  - productos: 10
+  - comentarios: 10
+[2025-07-23 06:59:32] Error al insertar productos: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nombre' in 'field list'
+Error al insertar comentarios: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'producto_id' in 'field list'
+
+[2025-07-23 06:59:32] Registros básicos insertados:
+  - categorias: 10
+  - accesorios: 10
+  - productos: 10
+  - comentarios: 10
+[2025-07-23 07:00:19] Error al insertar productos: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'marca' in 'field list'
+Error al insertar comentarios: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'producto_id' in 'field list'
+
+[2025-07-23 07:00:19] Registros básicos insertados:
+  - categorias: 10
+  - accesorios: 10
+  - productos: 10
+  - comentarios: 10
+[2025-07-23 07:04:25] Error al insertar productos: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'marca' in 'field list'
+Error al insertar comentarios: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'producto_id' in 'field list'
+
+[2025-07-23 07:04:25] Registros básicos insertados:
+  - categorias: 10
+  - accesorios: 10
+  - productos: 10
+  - comentarios: 10
+[2025-07-23 07:06:36] Generados 200 productos aleatorios
+Error al insertar comentarios: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'producto_id' in 'field list'
+
+[2025-07-23 07:06:36] Registros básicos insertados:
+  - categorias: 10
+  - accesorios: 10
+  - productos: 10
+  - comentarios: 10
+[2025-07-23 07:11:52] Generados 200 productos aleatorios
+Error al insertar comentarios: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'producto_id' in 'field list'
+[2025-07-23 07:11:52] Registros básicos insertados:
+  - categorias: 10
+  - accesorios: 10
+  - productos: 10
+  - comentarios: 10
+[2025-07-23 07:12:58] Generados 200 productos aleatorios
+[2025-07-23 07:13:02] Insertados 1000 comentarios aleatorios
+[2025-07-23 07:13:02] Registros básicos insertados:
+  - categorias: 10
+  - accesorios: 10
+  - productos: 10
+  - comentarios: 10

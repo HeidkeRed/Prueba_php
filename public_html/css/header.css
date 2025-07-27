@@ -1,0 +1,312 @@
+/* Reset básico para asegurar consistencia */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: 1.6;
+  color: #333;
+  background-color: #f8f8f8;
+  display: flex; /* Para que el footer se pegue abajo */
+  flex-direction: column; /* Para que el footer se pegue abajo */
+  min-height: 100vh; /* Para que el footer se pegue abajo */
+}
+
+/* Estilos del encabezado (del ejemplo anterior, incluido para contexto) */
+.header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 0.875rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.header .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 56px;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #333;
+  text-decoration: none;
+}
+
+.nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  color: #555;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.nav-link:hover {
+  background-color: #f0f0f0;
+  color: #000;
+}
+
+/* Estilos del pie de página (del ejemplo anterior, incluido para contexto) */
+.footer {
+  background-color: #333;
+  color: #f8f8f8;
+  padding: 1.5rem 0;
+  border-top: 1px solid #444;
+  margin-top: auto;
+}
+
+.footer .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-text {
+  font-size: 0.9rem;
+  color: #bbb;
+}
+
+.footer-nav {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer-link {
+  color: #f8f8f8;
+  text-decoration: none;
+  font-size: 0.9rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.footer-link:hover {
+  background-color: #555;
+  color: #fff;
+}
+
+/* Estilos para el contenido principal del catálogo */
+.main-content-catalog {
+  flex: 1; /* Ocupa el espacio restante entre header y footer */
+  padding: 2rem 1rem; /* Espaciado interno */
+  max-width: 1200px; /* Ancho máximo para centrar */
+  margin: 0 auto; /* Centra el contenedor */
+  width: 100%; /* Asegura que ocupe el ancho disponible */
+}
+
+.catalog-title {
+  font-size: 2rem; /* Tamaño de título */
+  font-weight: 700;
+  color: #333;
+  text-align: center; /* Centra el título */
+  margin-bottom: 2rem; /* Espacio debajo del título */
+}
+
+/* Grid de productos */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Columnas responsivas */
+  gap: 1.5rem; /* Espacio entre tarjetas */
+  margin-bottom: 2rem; /* Espacio debajo de la cuadrícula */
+}
+
+.product-grid-item {
+  display: flex; /* Asegura que la tarjeta ocupe todo el espacio del item */
+}
+
+.product-card-link {
+  text-decoration: none;
+  color: inherit; /* Hereda el color del texto */
+  display: flex; /* Para que el enlace ocupe toda la tarjeta */
+  width: 100%;
+}
+
+.product-card {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 0.5rem; /* Bordes redondeados */
+  overflow: hidden; /* Para que la imagen no se salga */
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Ocupa toda la altura disponible en el grid item */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Sombra sutil */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px); /* Efecto de elevación al pasar el ratón */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.product-card-featured {
+  border-color: #28a745; /* Borde verde para productos destacados/calificados */
+  box-shadow: 0 4px 8px rgba(40, 167, 69, 0.1); /* Sombra verde */
+}
+
+.product-image-placeholder {
+  width: 100%;
+  height: 200px; /* Altura fija para las imágenes */
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
+}
+
+.product-card-body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Permite que el cuerpo ocupe el espacio restante */
+}
+
+.product-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.product-details {
+  font-size: 0.95rem;
+  color: #666;
+  margin-top: auto; /* Empuja los detalles hacia abajo en la tarjeta */
+}
+
+/* Paginación */
+.pagination-nav {
+  margin-top: 2rem;
+}
+
+.pagination-list {
+  display: flex;
+  list-style: none;
+  justify-content: center; /* Centra la paginación */
+  gap: 0.5rem; /* Espacio entre elementos de paginación */
+}
+
+.pagination-item {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 0.375rem;
+  overflow: hidden;
+}
+
+.pagination-item.disabled .pagination-link {
+  color: #ccc;
+  pointer-events: none; /* Deshabilita clics */
+  background-color: #f0f0f0;
+}
+
+.pagination-item.active {
+  background-color: #007bff; /* Color de acento para la página activa */
+  border-color: #007bff;
+}
+
+.pagination-item.active .pagination-link {
+  color: #ffffff;
+}
+
+.pagination-link {
+  display: block;
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  color: #007bff;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.pagination-link:hover:not(.disabled) {
+  background-color: #e9ecef;
+  color: #0056b3;
+}
+
+/* Media Queries para responsividad */
+@media (max-width: 768px) {
+  .header .container {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .logo {
+    margin-bottom: 1rem;
+  }
+
+  .nav {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5rem;
+  }
+
+  .nav-link {
+    width: 100%;
+    text-align: left;
+    padding: 0.75rem 1rem;
+  }
+
+  .footer .container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-nav {
+    margin-top: 1rem;
+    width: 100%;
+  }
+
+  .catalog-title {
+    font-size: 1.75rem;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr; /* Una columna en móviles */
+  }
+
+  .pagination-list {
+    flex-wrap: wrap; /* Permite que los elementos de paginación se envuelvan */
+    justify-content: center;
+  }
+
+  .pagination-item {
+    flex-basis: calc(33% - 1rem); /* 3 elementos por fila en pantallas pequeñas */
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .pagination-item {
+    flex-basis: calc(50% - 1rem); /* 2 elementos por fila en pantallas muy pequeñas */
+  }
+}
