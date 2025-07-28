@@ -6,7 +6,7 @@ if (!defined('CONFIG_LOADED')) {
 
     // Datos de conexión
     $host = 'localhost:3307';
-    $dbname = 'tienda1';
+    $dbname = 'tienda3';
     $user = 'root';
     $password = '';
 

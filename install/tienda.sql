@@ -2,9 +2,9 @@
 -- Script completo con tablas y procedimiento
 -- ==========================
 
-CREATE DATABASE IF NOT EXISTS tienda1 CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+CREATE DATABASE IF NOT EXISTS tienda3 CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 
-USE tienda1;
+USE tienda3;
 
 DROP TABLE IF EXISTS comentarios;
 DROP TABLE IF EXISTS accesorios;
@@ -55,17 +55,17 @@ ADD fecha_registro DATETIME DEFAULT CURRENT_TIMESTAMP,
 ADD fecha_modificacion DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 ADD likes INT DEFAULT 0;
 
-INSERT INTO productos (modelo, especificaciones, precio, id_categoria) VALUES
-('Dell Inspiron 15', 'Intel i5, 8GB RAM, 256GB SSD', 12999.00, 1),
-('HP Pavilion x360', 'Intel i3, 4GB RAM, 128GB SSD, pantalla táctil', 11499.00, 8),
-('Lenovo IdeaCentre AIO', 'AMD Ryzen 5, 8GB RAM, 1TB HDD', 15299.00, 5),
-('ASUS ROG Strix', 'Intel i7, 16GB RAM, RTX 3060, 512GB SSD', 25999.00, 3),
-('MacBook Air M1', 'Apple M1, 8GB RAM, 256GB SSD', 23999.00, 4),
-('Acer Aspire 5', 'Intel i5, 8GB RAM, 512GB SSD', 13599.00, 1),
-('Dell OptiPlex 3080', 'Intel i5, 8GB RAM, 1TB HDD', 11899.00, 2),
-('MSI Modern 14', 'Intel i7, 16GB RAM, 512GB SSD', 17499.00, 4),
-('HP Chromebox G3', 'Intel Celeron, 4GB RAM, 32GB eMMC', 8999.00, 9),
-('Lenovo ThinkStation', 'Intel Xeon, 32GB RAM, 1TB SSD', 38999.00, 6);
+INSERT INTO productos (modelo, especificaciones, marca, precio, id_categoria) VALUES
+('Dell Inspiron 15', 'Intel i5, 8GB RAM, 256GB SSD', 'Dell', 12999.00, 1),
+('HP Pavilion x360', 'Intel i3, 4GB RAM, 128GB SSD, pantalla táctil', 'HP', 11499.00, 8),
+('Lenovo IdeaCentre AIO', 'AMD Ryzen 5, 8GB RAM, 1TB HDD', 'Lenovo', 15299.00, 5),
+('ASUS ROG Strix', 'Intel i7, 16GB RAM, RTX 3060, 512GB SSD', 'ASUS', 25999.00, 3),
+('MacBook Air M1', 'Apple M1, 8GB RAM, 256GB SSD', 'Apple', 23999.00, 4),
+('Acer Aspire 5', 'Intel i5, 8GB RAM, 512GB SSD', 'Acer', 13599.00, 1),
+('Dell OptiPlex 3080', 'Intel i5, 8GB RAM, 1TB HDD', 'Dell', 11899.00, 2),
+('MSI Modern 14', 'Intel i7, 16GB RAM, 512GB SSD', 'MSI', 17499.00, 4),
+('HP Chromebox G3', 'Intel Celeron, 4GB RAM, 32GB eMMC', 'HP', 8999.00, 9),
+('Lenovo ThinkStation', 'Intel Xeon, 32GB RAM, 1TB SSD', 'Lenovo', 38999.00, 6);
 
 -- ==========================
 -- Tabla de comentarios

@@ -57,3 +57,17 @@ Error al insertar comentarios: SQLSTATE[42S22]: Column not found: 1054 Unknown c
   - accesorios: 10
   - productos: 10
   - comentarios: 10
+[2025-07-28 09:36:54] Generados 200 productos aleatorios
+[2025-07-28 09:36:57] Insertados 1000 comentarios aleatorios
+[2025-07-28 09:36:57] Registros básicos insertados:
+  - categorias: 10
+  - accesorios: 10
+  - productos: 10
+  - comentarios: 10
+[2025-07-28 09:42:51] Generados 200 productos aleatorios
+[2025-07-28 09:42:53] Insertados 1000 comentarios aleatorios
+[2025-07-28 09:42:53] Registros básicos insertados:
+  - categorias: 10
+  - accesorios: 10
+  - productos: 10
+  - comentarios: 10

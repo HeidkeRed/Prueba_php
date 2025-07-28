@@ -1,68 +1,123 @@
 <?php
-// Incluye el encabezado y el pie de página que ya hemos modernizado
 include 'includes/header.php';
 ?>
 
-<main class="container py-4">
-  <div class="container py-4">
-    <h2 class="mb-3">Categorías principales</h2>
-    <ul class="list-group mb-4">
-      <?php foreach ($categoriasPadre as $categoria): ?>
-        <li class="list-group-item">
-          <button class="btn btn-outline-primary w-100 categoria-padre" data-id="<?= $categoria['id'] ?>">
-            <?= htmlspecialchars($categoria['nombre']) ?>
-          </button>
-        </li>
-      <?php endforeach; ?>
-    </ul>
-
-    <h3>Subcategorías</h3>
-    <ul id="categorias-hijas" class="btn btn-outline-primary btn-sm categoria-padre"></ul>
 
 
-    <h2>Productos Destacados</h2>
-    <div id="ver-mas-destacados" class="text-center my-4"></div>
-    <div id="productos-destacados" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 mb-5">
-      <?php foreach ($productosDestacados as $producto): ?>
-        <div class="col">
-          <a href="/Proceso_seleccion/public_html/producto_detalle.php?id=<?= $producto['id'] ?>" class="text-decoration-none text-dark">
-            <div class="card h-100 d-flex flex-column"> <!-- <- esto es clave -->
-              <div class="card-body flex-grow-1 d-flex flex-column">
-                <h5 class="card-title"><?= htmlspecialchars($producto['modelo']) ?></h5>
-                <p class="card-text mt-auto">
-                  Marca: <?= htmlspecialchars($producto['marca'] ?? 'Sin marca') ?><br>
-                  Precio: $<?= number_format($producto['precio'], 2) ?>
-                  Likes: <?= number_format($producto['likes']) ?>
-                  Visitas: <?= number_format($producto['visitas']) ?>
-                </p>
+<main class="home-main">
+  <div class="home-container">
+    
+    <!-- Sección de Categorías Principales -->
+    <section class="home-categories">
+      <h2 class="home-categories__title">Categorías Principales</h2>
+      <ul class="home-categories__list">
+        <?php foreach ($categoriasPadre as $categoria): ?>
+          <li class="home-categories__item">
+            <button class="home-categories__button categoria-padre" data-id="<?= $categoria['id'] ?>">
+              <?= htmlspecialchars($categoria['nombre']) ?>
+            </button>
+          </li>
+        <?php endforeach; ?>
+      </ul>
+      
+      <!-- Subcategorías -->
+      <div class="home-subcategories">
+        <h3 class="home-subcategories__title">Subcategorías</h3>
+        <ul id="categorias-hijas" class="home-subcategories__list"></ul>
+      </div>
+    </section>
+
+    <hr class="home-divider">
+
+    <!-- Sección de Productos Destacados -->
+    <section class="home-products-section">
+      <h2 class="home-products-section__title home-products-section__title--featured">
+        Productos Destacados
+        <span class="home-badge home-badge--featured">Destacado</span>
+      </h2>
+      
+      <div class="home-view-more" id="ver-mas-destacados"></div>
+      
+      <div id="productos-destacados" class="home-products-grid">
+        <?php foreach ($productosDestacados as $producto): ?>
+          <div class="home-product-card home-product-card--featured">
+            <a href="/Proceso_seleccion/public_html/producto_detalle.php?id=<?= $producto['id'] ?>" class="home-product-card">
+              <div class="home-product-card__image">
               </div>
-            </div>
-          </a>
-        </div>
-      <?php endforeach; ?>
-    </div>
-
-    <h2>Productos Mejor Calificados</h2>
-    <div id="ver-mas-calificados" class="text-center my-4"></div>
-    <div id="productos-mejor-calificados" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
-      <?php foreach ($productosMejorCalificados as $producto): ?>
-        <div class="col">
-          <a href="/Proceso_seleccion/public_html/producto_detalle.php?id=<?= $producto['id'] ?>" class="text-decoration-none text-dark">
-            <div class="card h-100 d-flex flex-column border-success">
-              <div class="card-body flex-grow-1 d-flex flex-column">
-                <h5 class="card-title"><?= htmlspecialchars($producto['modelo']) ?></h5>
-                <p class="card-text mt-auto">
-                  Marca: <?= htmlspecialchars($producto['marca'] ?? 'Sin marca') ?><br>
-                  Calificación: <?= $producto['promedio_calificacion'] ?? 'Sin calificación' ?><br>
-                  Precio: $<?= number_format($producto['precio'], 2) ?>
-                  Likes: <?= number_format($producto['likes']) ?>
-                  Visitas: <?= number_format($producto['visitas']) ?>
-                </p>
+              <div class="home-product-card__body">
+                <h5 class="home-product-card__title"><?= htmlspecialchars($producto['modelo']) ?></h5>
+                <div class="home-product-card__info">
+                  <div class="home-product-card__brand">
+                    Marca: <?= htmlspecialchars($producto['marca'] ?? 'Sin marca') ?>
+                  </div>
+                  <div class="home-product-card__price">
+                    $<?= number_format($producto['precio'], 2) ?>
+                  </div>
+                  <div class="home-product-card__stats">
+                    <span class="home-product-card__stat home-product-card__stat--likes">
+                      ❤️ <?= number_format($producto['likes']) ?>
+                    </span>
+                    <span class="home-product-card__stat home-product-card__stat--views">
+                      👁️ <?= number_format($producto['visitas']) ?>
+                    </span>
+                  </div>
+                </div>
               </div>
-            </div>
-        </div>
-      <?php endforeach; ?>
-    </div>
+            </a>
+          </div>
+        <?php endforeach; ?>
+      </div>
+    </section>
 
+    <hr class="home-divider">
+
+    <!-- Sección de Productos Mejor Calificados -->
+    <section class="home-products-section">
+      <h2 class="home-products-section__title home-products-section__title--rated">
+        Productos Mejor Calificados
+        <span class="home-badge home-badge--rated">Top Rated</span>
+      </h2>
+      
+      <div class="home-view-more" id="ver-mas-calificados"></div>
+      
+      <div id="productos-mejor-calificados" class="home-products-grid">
+        <?php foreach ($productosMejorCalificados as $producto): ?>
+          <div class="home-product-card home-product-card--rated">
+            <a href="/Proceso_seleccion/public_html/producto_detalle.php?id=<?= $producto['id'] ?>" class="home-product-card">
+              <div class="home-product-card__image">
+                <!-- Aquí puedes agregar la imagen del producto si la tienes -->
+              </div>
+              <div class="home-product-card__body">
+                <h5 class="home-product-card__title"><?= htmlspecialchars($producto['modelo']) ?></h5>
+                <div class="home-product-card__info">
+                  <div class="home-product-card__brand">
+                    Marca: <?= htmlspecialchars($producto['marca'] ?? 'Sin marca') ?>
+                  </div>
+                  <div class="home-product-card__stats">
+                    <span class="home-product-card__stat home-product-card__stat--rating">
+                      ⭐ <?= $producto['promedio_calificacion'] ?? 'Sin calificación' ?>
+                    </span>
+                  </div>
+                  <div class="home-product-card__price">
+                    $<?= number_format($producto['precio'], 2) ?>
+                  </div>
+                  <div class="home-product-card__stats">
+                    <span class="home-product-card__stat home-product-card__stat--likes">
+                      ❤️ <?= number_format($producto['likes']) ?>
+                    </span>
+                    <span class="home-product-card__stat home-product-card__stat--views">
+                      👁️ <?= number_format($producto['visitas']) ?>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        <?php endforeach; ?>
+      </div>
+    </section>
+
+  </div>
 </main>
+
 <?php include 'includes/footer.php'; ?>

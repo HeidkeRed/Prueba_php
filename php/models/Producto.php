@@ -24,6 +24,8 @@ class Producto
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+
+
     public function obtenerComentariosPorProducto()
     {
         $sql = "SELECT id_producto, texto, nombre, calificacion FROM comentarios ORDER BY id_producto";
@@ -36,6 +38,8 @@ class Producto
         }
         return $comentariosPorProducto;
     }
+
+
 
     public static function obtenerCatalogoAleatorioPorCategoria($idCategoria, $limite = 10)
     {
@@ -50,6 +54,8 @@ class Producto
         return $stmt->fetchAll();
     }
 
+
+
     public function obtenerProductosAleatorios($limite = 10)
     {
         $sql = "SELECT * FROM productos ORDER BY RAND() LIMIT :limite";
@@ -59,6 +65,8 @@ class Producto
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+
 
     public function obtenerProductosMejorCalificados($limite = 10)
     {
@@ -78,6 +86,8 @@ class Producto
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+
 
 
     public function vistaProducto($idProducto)
@@ -100,6 +110,8 @@ class Producto
         $stmt->execute([$idProducto]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+
     public function calcularMensualidad($precio, $meses)
     {
         $stmt = $this->pdo->prepare("CALL calcular_mensualidad(:precio_in, :meses_in, @mensualidad_out)");
@@ -111,6 +123,8 @@ class Producto
 
         return $result['mensualidad'] ?? 0;
     }
+
+    
 
     public function obtenerPrecioPorId($idProducto)
     {
@@ -175,6 +189,8 @@ class Producto
         return (int) $stmt->fetchColumn();
     }
 
+
+  //Metadatos  
     public function aumentarLikes($idProducto)
     {
         $sql = "UPDATE productos SET likes = likes + 1 WHERE id = :id";

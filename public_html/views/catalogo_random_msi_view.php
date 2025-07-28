@@ -1,19 +1,34 @@
-<?php
-require 'includes/header.php'; // Agrega el header
-?>
+<?php require 'includes/header.php'; ?>
 
-<h1>Catálogo aleatorio (<?= $meses ?> meses)</h1>
+<main class="container py-4">
+    <section class="catalogo-section">
+        <h1 class="catalogo-title">Catálogo aleatorio (<?= $meses ?> meses)</h1>
 
-<?php foreach ($productos as $p): ?>
-    <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 15px;">
-        <h3><?= htmlspecialchars($p['modelo']) ?></h3>
-        <p><strong>Especificaciones:</strong> <?= nl2br(htmlspecialchars($p['especificaciones'])) ?></p>
-        <p><strong>Precio:</strong> $<?= number_format($p['precio'], 2) ?></p>
-        <p><strong>Mensualidad estimada a <?= $meses ?> meses:</strong> $<?= number_format($p['precio'] / $meses, 2) ?></p>
-        <p>👍 Likes: <?= $p['likes'] ?> | 👁️ Visitas: <?= $p['visitas'] ?></p>
-    </div>
-<?php endforeach; ?>
+        <div class="row g-4">
+            <?php foreach ($productos as $p): ?>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <a href="/Proceso_seleccion/public_html/producto_detalle.php?id=<?= $p['id'] ?>" class="d-block text-decoration-none text-reset">
+                        <div class="product-card">
+                            <div class="product-icon">
+                                <?= strtoupper(substr($p['modelo'], 0, 1)) ?>
+                            </div>
 
-<?php
-require 'includes/footer.php'; // Agrega el footer
-?>
+                            <div class="product-info">
+                                <h3><?= htmlspecialchars($p['modelo']) ?></h3>
+                                <p><strong>Especificaciones:</strong><br><?= nl2br(htmlspecialchars($p['especificaciones'])) ?></p>
+                                <p><strong>Precio:</strong> $<?= number_format($p['precio'], 2) ?></p>
+                                <p><strong>Mensualidad (<?= $meses ?> meses):</strong> $<?= number_format($p['precio'] / $meses, 2) ?></p>
+                            </div>
+
+                            <div class="product-meta">
+                                <span>👍 <?= $p['likes'] ?> | 👁️ <?= $p['visitas'] ?></span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </section>
+</main>
+
+<?php require 'includes/footer.php'; ?>

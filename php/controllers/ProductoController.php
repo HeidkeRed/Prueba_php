@@ -49,7 +49,7 @@ class ProductoController
         $mensualidad6 = $productoModel->calcularMensualidad($productoInfo['precio'], 6);
 
 
-        
+
         include __DIR__ . '/../../public_html/views/producto_detalle_view.php';
     }
     public function mostrarCatalogo($idCategoria, $modo = 'aleatorios', $pagina = 1)
@@ -79,8 +79,12 @@ class ProductoController
 
 
 
-    public static function verCatalogoPorCategoria($idCategoria, $limite = 10)
+    public static function verCatalogoMSIPorCategoria($idCategoria, $limite = 10)
     {
-        return Producto::obtenerCatalogoAleatorioPorCategoria($idCategoria, $limite);
+        $categoriaId = isset($_GET['categoria']) ? (int)$_GET['categoria'] : 1;
+        $meses = isset($_GET['meses']) ? (int)$_GET['meses'] : 12;
+        $productos = Producto::obtenerCatalogoAleatorioPorCategoria($idCategoria, $limite);
+        // Haz disponible la variable $productos para la vista
+        include __DIR__ . '/../../public_html/views/catalogo_random_msi_view.php';
     }
 }

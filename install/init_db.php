@@ -97,22 +97,35 @@ try {
     $pdo->commit();
     $log[] = date('[Y-m-d H:i:s]') . " Generados 200 productos aleatorios";
 
-    // Insertar 1000 comentarios aleatorios
+    // Insertar al menos 2 comentarios por producto
     $comentariosInsertados = 0;
     $stmtProductos = $pdo->query("SELECT id FROM productos");
     $idsProductos = $stmtProductos->fetchAll(PDO::FETCH_COLUMN);
-    $stmtInsertComentario = $pdo->prepare("INSERT INTO comentarios (id_producto, texto, calificacion) VALUES (?, ?, ?)");
+    $stmtInsertComentario = $pdo->prepare("INSERT INTO comentarios (id_producto, texto, nombre, calificacion) VALUES (?, ?, ?, ?)");
 
-    for ($i = 0; $i < 1000; $i++) {
+    // Primero, 2 comentarios por producto
+    foreach ($idsProductos as $producto_id) {
+        for ($j = 0; $j < 2; $j++) {
+            $comentario = $comentariosLorem[array_rand($comentariosLorem)];
+            $nombre = "Usuario_" . rand(1, 500);
+            $calificacion = rand(1, 5);
+            $stmtInsertComentario->execute([$producto_id, $comentario, $nombre, $calificacion]);
+            $comentariosInsertados++;
+        }
+    }
+
+    // Luego, comentarios aleatorios hasta llegar a 1000
+    while ($comentariosInsertados < 1000) {
         $comentario = $comentariosLorem[array_rand($comentariosLorem)];
+        $nombre = "Anon_" . rand(1000, 9999);
         $calificacion = rand(1, 5);
         $producto_id = $idsProductos[array_rand($idsProductos)];
-
-        $stmtInsertComentario->execute([$producto_id, $comentario, $calificacion]);
+        $stmtInsertComentario->execute([$producto_id, $comentario, $nombre, $calificacion]);
         $comentariosInsertados++;
     }
-    $log[] = date('[Y-m-d H:i:s]') . " Insertados $comentariosInsertados comentarios aleatorios";
 
+
+    $log[] = date('[Y-m-d H:i:s]') . " Insertados $comentariosInsertados comentarios aleatorios";
 } catch (PDOException $e) {
     if ($pdo && $pdo->inTransaction()) {
         $pdo->rollBack();

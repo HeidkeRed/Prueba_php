@@ -61,23 +61,35 @@ function actualizarProductos(idCategoriaHija) {
             if (data.destacados.length > 0) {
                 data.destacados.forEach(p => {
                     destacados.innerHTML += `
-                        <div class="col">
-                            <a href="/Proceso_seleccion/public_html/producto_detalle.php?id=${p.id}" class="text-decoration-none text-dark">
-                                <div class="card h-100 d-flex flex-column">
-                                    <div class="card-body flex-grow-1 d-flex flex-column">
-                                        <h5 class="card-title">${p.modelo}</h5>
-                                        <p class="card-text mt-auto">
-                                            Marca: ${p.marca ?? 'Sin marca'}<br>
-                                            Precio: $${parseFloat(p.precio).toFixed(2)}
-                                            Likes: ${p.likes ?? 0} <br>
-                                Visitas: ${p.visitas ?? 0}
-                                        </p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    `;
+    <div class="home-product-card home-product-card--featured">
+      <a href="/Proceso_seleccion/public_html/producto_detalle.php?id=${p.id}" class="home-product-card">
+        <div class="home-product-card__image">
+          <!-- Aquí podrías agregar la imagen si tienes URL: <img src="${p.imagen}" alt="${p.modelo}"> -->
+        </div>
+        <div class="home-product-card__body">
+          <h5 class="home-product-card__title">${p.modelo}</h5>
+          <div class="home-product-card__info">
+            <div class="home-product-card__brand">
+              Marca: ${p.marca ?? 'Sin marca'}
+            </div>
+            <div class="home-product-card__price">
+              $${parseFloat(p.precio).toFixed(2)}
+            </div>
+            <div class="home-product-card__stats">
+              <span class="home-product-card__stat home-product-card__stat--likes">
+                ❤️ ${p.likes ?? 0}
+              </span>
+              <span class="home-product-card__stat home-product-card__stat--views">
+                👁️ ${p.visitas ?? 0}
+              </span>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  `;
                 });
+
 
                 // Crear botón "Ver más" para destacados
                 botonVerMasDestacados.innerHTML = `
@@ -93,24 +105,40 @@ function actualizarProductos(idCategoriaHija) {
             if (data.calificados.length > 0) {
                 data.calificados.forEach(p => {
                     calificados.innerHTML += `
-                        <div class="col">
-                            <a href="/Proceso_seleccion/public_html/producto_detalle.php?id=${p.id}" class="text-decoration-none text-dark">
-                                <div class="card h-100 d-flex flex-column border-success">
-                                    <div class="card-body flex-grow-1 d-flex flex-column">
-                                        <h5 class="card-title">${p.modelo}</h5>
-                                        <p class="card-text mt-auto">
-                                            Marca: ${p.marca ?? 'Sin marca'}<br>
-                                            Calificación: ${p.promedio_calificacion ?? 'Sin calificación'}<br>
-                                            Precio: $${parseFloat(p.precio).toFixed(2)}
-                                            Likes: ${p.likes ?? 0} <br>
-                                Visitas: ${p.visitas ?? 0}
-                                        </p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    `;
+    <div class="home-product-card home-product-card--rated">
+      <a href="/Proceso_seleccion/public_html/producto_detalle.php?id=${p.id}" class="home-product-card">
+        <div class="home-product-card__image">
+          <!-- Imagen aquí si se desea -->
+        </div>
+        <div class="home-product-card__body">
+          <h5 class="home-product-card__title">${p.modelo}</h5>
+          <div class="home-product-card__info">
+            <div class="home-product-card__brand">
+              Marca: ${p.marca ?? 'Sin marca'}
+            </div>
+            <div class="home-product-card__stats">
+              <span class="home-product-card__stat home-product-card__stat--rating">
+                ⭐ ${p.promedio_calificacion ?? 'Sin calificación'}
+              </span>
+            </div>
+            <div class="home-product-card__price">
+              $${parseFloat(p.precio).toFixed(2)}
+            </div>
+            <div class="home-product-card__stats">
+              <span class="home-product-card__stat home-product-card__stat--likes">
+                ❤️ ${p.likes ?? 0}
+              </span>
+              <span class="home-product-card__stat home-product-card__stat--views">
+                👁️ ${p.visitas ?? 0}
+              </span>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  `;
                 });
+
 
                 // Crear botón "Ver más" para mejor calificados
                 botonVerMasCalificados.innerHTML = `
